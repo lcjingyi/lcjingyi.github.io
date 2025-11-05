@@ -4,8 +4,9 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>linqixu_Blog - 技术</title>
+                        <title>mcp服务配置指南</title>
                         <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta name="description" content="MCP服务器配置指南 本指南详细说明如何在不同的AI客户端中配置您的数学计算MCP服务器。 前置条件 确保您的MCP服务器已经可以正常运行： # 1. 启动FastAPI服务器 uvicorn main:app --reload --port 8000 # 2. 测试MCP服务器..." />
         </head>
 
         <body id="index" class="home">
@@ -15,10 +16,15 @@
                                                 <li class="active"><a href="/category/ji-zhu.html">技术</a></li>
                         </ul></nav>
                 </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/mcpfu-wu-pei-zhi-zhi-nan.html" rel="bookmark"
+             title="Permalink to mcp服务配置指南">mcp服务配置指南</a></h1>
+      </header>
 
-                <aside id="featured" class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="/mcpfu-wu-pei-zhi-zhi-nan.html">mcp服务配置指南</a></h1>
+      <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-11-05T14:30:00+01:00">
                 Published: 周三 05 十一月 2025
@@ -29,7 +35,7 @@
                 </address>
         <p>In <a href="/category/ji-zhu.html">技术</a>.</p>
 <p>tags: <a href="/tag/mcp.html">MCP</a> </p>        
-</footer><!-- /.post-info --><h1>MCP服务器配置指南</h1>
+</footer><!-- /.post-info -->        <h1>MCP服务器配置指南</h1>
 <p>本指南详细说明如何在不同的AI客户端中配置您的数学计算MCP服务器。</p>
 <h2>前置条件</h2>
 <p>确保您的MCP服务器已经可以正常运行：</p>
@@ -286,56 +292,11 @@ python<span class="w"> </span>simple_test.py
 curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/api/add<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;a&quot;:5,&quot;b&quot;:3}&#39;</span>
 </code></pre></div>
 
-<p>配置完成后，您的数学计算MCP服务器就可以在AI客户端中正常使用了！</p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
+<p>配置完成后，您的数学计算MCP服务器就可以在AI客户端中正常使用了！</p>
+      </div><!-- /.entry-content -->
 
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="/wo-de-di-yi-pian-bo-ke.html" rel="bookmark"
-                               title="Permalink to 我的第一篇博客">我的第一篇博客</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2025-11-05T14:30:00+01:00">
-                Published: 周三 05 十一月 2025
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="/author/lingqixu.html">lingqixu</a>
-                </address>
-        <p>In <a href="/category/ji-zhu.html">技术</a>.</p>
-<p>tags: <a href="/tag/python.html">Python</a> <a href="/tag/bo-ke.html">博客</a> </p>        
-</footer><!-- /.post-info -->                        <h1>数字运算MCP服务器</h1>
-<p><code>API</code>接口服务器</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-<span class="kn">from</span> <span class="nn">ping_func</span> <span class="kn">import</span> <span class="n">ping_func</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-<span class="k">class</span> <span class="nc">MathRequest</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">a</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">b</span><span class="p">:</span> <span class="nb">int</span>
-
-<span class="k">class</span> <span class="nc">MathResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">result</span><span class="p">:</span> <span class="nb">int</span>
-
-<span class="k">class</span> <span class="nc">PingRequest</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
-
-<span class="k">class</span> <span class="nc">PingResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">message</span><span class="p">:</span> <span class="nb">bool</span>
-
-<span class="c1">#整数加 …</span></code></pre></div>
-                        <a class="readmore" href="/wo-de-di-yi-pian-bo-ke.html">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-                    </ol><!-- /#posts-list -->
-                    </section><!-- /#content -->
+    </article>
+  </section>
                 <section id="extras" class="body">
                                 <div class="blogroll">
                                         <h2>links</h2>
