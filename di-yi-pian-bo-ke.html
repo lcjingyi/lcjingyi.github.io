@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Pelican" />
+    <title>第一篇博客 | linqixu_Blog</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+
+    <!-- RSS Feeds -->
+
+    <!-- Extra head content -->
+</head>
+
+<body id="index" class="homearticle">
+    <div class="container">
+        <!-- Header -->
+
+        <!-- Main content -->
+        <main id="content">
+    <a href="/" class="back-button">返回首页</a>
+    <article class="hentry">
+        <header>
+            <h1 class="entry-title">第一篇博客</h1>
+        </header>
+
+        <footer class="post-info">
+            <time class="published" datetime="2025-11-05T14:30:00+08:00">
+                周三 05 十一月 2025
+            </time>
+            <address class="vcard author">
+                By <a class="url fn" href="/author/lingqixu.html">lingqixu</a>
+            </address>
+            <p>In <a href="/category/sui-ji.html">随记</a>.</p>
+            <p>tags:
+                <a href="/tag/ji-lu.html">记录</a>,                 <a href="/tag/bo-ke.html">博客</a>            </p>
+        </footer>
+
+        <div class="entry-content">
+            <h4>一、博客介绍</h4>
+<p>本博客采用<code>Pelican</code>搭建，纯静态页面，托管于<code>github</code>，主要记录一些学习过程中的记录。</p>
+<h4>二、搭建过程</h4>
+<ol>
+<li>安装依赖</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pip install pelican markdown  # markdown 支持 Markdown 语法解析
+</code></pre></div>
+
+<ol>
+<li>初始化博客</li>
+</ol>
+<div class="highlight"><pre><span></span><code>mkdir my_static_blog &amp;&amp; cd my_static_blog
+pelican-quickstart   # 交互式初始化（按提示输入博客名称、作者、URL 等）
+</code></pre></div>
+
+<ol>
+<li>第一篇文章
+在 content/ 目录下创建 hello-world.md 文件，内容如下：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span><span class="w"> </span><span class="n">xxxx</span>
+<span class="n">Date</span><span class="o">:</span><span class="w"> </span><span class="n">xxxx</span><span class="o">-</span><span class="n">xx</span><span class="o">-</span><span class="n">xx</span><span class="w"> </span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span>
+<span class="n">Category</span><span class="o">:</span><span class="w"> </span><span class="n">xx</span>
+<span class="n">Tags</span><span class="o">:</span><span class="w"> </span><span class="n">xx</span><span class="o">,</span><span class="w"> </span><span class="n">xx</span>
+
+<span class="err">这是用</span><span class="w"> </span><span class="n">Pelican</span><span class="w"> </span><span class="err">搭建的静态博客，支持</span><span class="w"> </span><span class="n">Markdown</span><span class="w"> </span><span class="err">语法！</span>
+</code></pre></div>
+
+<ol>
+<li>生成本地文件预览</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pelican content  # 生成静态 HTML 到 output/ 目录
+pelican --listen  # 启动本地预览服务器
+</code></pre></div>
+
+<p>在浏览器查看<code>http://127.0.0.1:8000</code></p>
+<ol>
+<li>部署到<code>github</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装部署插件</span>
+<span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span>
+<span class="c1"># 推送静态文件到 GitHub Pages</span>
+<span class="n">ghp</span><span class="o">-</span><span class="kn">import</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">output</span><span class="o">/</span>
+</code></pre></div>
+
+<p>之后访问 <code>https://你的GitHub用户名.github.io/</code> 即可访问博客。</p>
+<h4>三、自定义主题</h4>
+<p>在根目录下创建<code>themes</code>文件夹，保存自己的主题样式</p>
+        </div>
+
+        <!-- Article navigation -->
+    </article>
+        </main>
+
+        <!-- Sidebar removed -->
+
+        <!-- Footer -->
+        <footer id="contentinfo" class="body">
+            <!-- 页脚内容已移除 -->
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/theme/js/main.js"></script>
+</body>
+</html>
