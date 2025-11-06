@@ -38,3 +38,65 @@
         createBackToTopButton();
     }
 })();
+
+// 代码块折叠功能
+(function() {
+    'use strict';
+
+    function enhanceCodeBlocks() {
+        const codeBlocks = document.querySelectorAll('.highlight');
+
+        codeBlocks.forEach((codeBlock, index) => {
+            // 获取代码语言
+            let language = '代码';
+            const preElement = codeBlock.querySelector('pre');
+            if (preElement) {
+                const classNames = preElement.className.split(' ');
+                const languageClass = classNames.find(cls => cls.startsWith('language-'));
+                if (languageClass) {
+                    language = languageClass.replace('language-', '').toUpperCase();
+                }
+            }
+
+            // 创建折叠头部
+            const header = document.createElement('div');
+            header.className = 'code-header';
+            header.innerHTML = `
+                <span class="code-language">${language}</span>
+                <button class="code-toggle" aria-label="折叠代码块">
+                    <span class="toggle-icon">−</span>
+                </button>
+            `;
+
+            // 插入头部
+            codeBlock.insertBefore(header, codeBlock.firstChild);
+
+            // 添加折叠功能
+            const toggleButton = header.querySelector('.code-toggle');
+            const preElement = codeBlock.querySelector('pre');
+
+            toggleButton.addEventListener('click', function() {
+                const isCollapsed = preElement.classList.contains('collapsed');
+
+                if (isCollapsed) {
+                    // 展开
+                    preElement.classList.remove('collapsed');
+                    toggleButton.querySelector('.toggle-icon').textContent = '−';
+                    toggleButton.setAttribute('aria-label', '折叠代码块');
+                } else {
+                    // 折叠
+                    preElement.classList.add('collapsed');
+                    toggleButton.querySelector('.toggle-icon').textContent = '+';
+                    toggleButton.setAttribute('aria-label', '展开代码块');
+                }
+            });
+        });
+    }
+
+    // 页面加载完成后初始化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', enhanceCodeBlocks);
+    } else {
+        enhanceCodeBlocks();
+    }
+})();
