@@ -273,9 +273,9 @@ body.homearticle .container {
     background: var(--bg-light);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
+    padding: var(--spacing-md);
     margin: var(--spacing-md) 0;
     overflow-x: auto;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .highlight pre {
@@ -284,59 +284,6 @@ body.homearticle .container {
     font-size: 0.9rem;
     line-height: 1.5;
     color: var(--text-color);
-    transition: all 0.3s ease;
-}
-
-/* 代码块折叠头部 */
-.code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    background: var(--bg-sidebar);
-    border-bottom: 1px solid var(--border-color);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.code-language {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.code-toggle {
-    background: none;
-    border: 1px solid var(--border-color);
-    border-radius: 3px;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    transition: all 0.2s ease;
-}
-
-.code-toggle:hover {
-    background: var(--bg-color);
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
-}
-
-/* 折叠状态 */
-.highlight pre.collapsed {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-}
-
-.highlight pre:not(.collapsed) {
-    padding: var(--spacing-md);
 }
 
 code {
