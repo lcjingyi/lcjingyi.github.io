@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Pelican" />
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css" />
+
+    <!-- RSS Feeds -->
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
+    {% endif %}
+
+    <!-- Extra head content -->
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body id="index" class="home{% block body_class %}{% endblock %}">
+    <div class="container">
+        <!-- Header -->
+        {% block banner %}
+        <header id="banner" class="body">
+            <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+            {% block navigation %}
+            {% if NAVIGATION_CONTEXT %}
+            <nav>
+                <ul>
+                    {% for item in NAVIGATION_CONTEXT.navigation_menu %}
+                    <li><a href="{{ SITEURL }}{{ item.url }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% endif %}
+            {% if DISPLAY_PAGES_ON_MENU %}
+            <nav>
+                <ul>
+                    {% for page in pages %}
+                    <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% endif %}
+            {% if DISPLAY_CATEGORIES_ON_MENU %}
+            <nav>
+                <ul>
+                    {% for cat, null in categories %}
+                    <li><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% endif %}
+            {% endblock %}
+        </header>
+        {% endblock %}
+
+        <!-- Main content -->
+        <main id="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <!-- Sidebar removed -->
+
+        <!-- Footer -->
+        <footer id="contentinfo" class="body">
+            <!-- 页脚内容已移除 -->
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ SITEURL }}/theme/js/main.js"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

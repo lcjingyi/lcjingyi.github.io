@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+    <a href="{{ SITEURL }}/" class="back-button">返回首页</a>
+    <article class="hentry">
+        <header>
+            <h1 class="entry-title">{{ page.title }}</h1>
+        </header>
+
+        <footer class="post-info">
+            <time class="published" datetime="{{ page.date.isoformat() }}">
+                {{ page.locale_date }}
+            </time>
+            {% if page.category %}
+            <p>In <a href="{{ SITEURL }}/{{ page.category.url }}">{{ page.category }}</a>.</p>
+            {% endif %}
+        </footer>
+
+        <div class="entry-content">
+            {{ page.content }}
+        </div>
+    </article>
+{% endblock %}

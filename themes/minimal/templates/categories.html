@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}分类 | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+    <a href="{{ SITEURL }}/" class="back-button">返回首页</a>
+    <section id="content" class="body">
+        <h1>文章分类</h1>
+
+        <div class="categories-grid">
+            {% for category, articles in categories|sort %}
+            <div class="category-card">
+                <h2><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a></h2>
+                <p class="article-count">{{ articles|length }} 篇文章</p>
+                {% if articles %}
+                <div class="recent-articles">
+                    <h3>最新文章</h3>
+                    <ul>
+                        {% for article in articles[:3] %}
+                        <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
